@@ -28,3 +28,5 @@ fabric.properties
 
 *.iml
 modules.xml
+
+target/
