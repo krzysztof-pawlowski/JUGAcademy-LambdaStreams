@@ -5,6 +5,7 @@ import com.example.model.Album;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class PredicateExample {
 
@@ -15,47 +16,27 @@ public class PredicateExample {
     }
 
     public List<Album> filterAlbumsByName(String name) {
-        if (albums == null) {
-            return Collections.emptyList();
-        }
-        if (name == null) {
-            return albums;
-        }
-        List<Album> filteredAlbums = new ArrayList<Album>();
-        for (Album album : albums) {
-            if (name.equals(album.getName())) {
-                filteredAlbums.add(album);
-            }
-        }
-        return filteredAlbums;
+        return filterAlbumsByPredicate(album -> name.equals(album.getName()), name);
     }
 
     public List<Album> filterAlbumsByArtist(String artist) {
-        if (albums == null) {
-            return Collections.emptyList();
-        }
-        if (artist == null) {
-            return albums;
-        }
-        List<Album> filteredAlbums = new ArrayList<>();
-        for (Album album : albums) {
-            if (artist.equals(album.getArtist())) {
-                filteredAlbums.add(album);
-            }
-        }
-        return filteredAlbums;
+        return filterAlbumsByPredicate(album -> artist.equals(album.getArtist()), artist);
     }
 
     public List<Album> filterAlbumsByGenre(Album.Genre genre) {
+        return filterAlbumsByPredicate(album -> genre.equals(album.getGenre()), genre);
+    }
+
+    private List<Album> filterAlbumsByPredicate(Predicate<Album> predicate, Object testArg) {
         if (albums == null) {
             return Collections.emptyList();
         }
-        if (genre == null) {
+        if (testArg == null) {
             return albums;
         }
         List<Album> filteredAlbums = new ArrayList<>();
         for (Album album : albums) {
-            if (genre.equals(album.getGenre())) {
+            if (predicate.test(album)) {
                 filteredAlbums.add(album);
             }
         }
