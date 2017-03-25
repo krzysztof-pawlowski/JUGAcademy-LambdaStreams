@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PredicateExample {
+public class FilteringExample {
 
     private List<Album> albums;
 
-    public PredicateExample(List<Album> albums) {
+    public FilteringExample(List<Album> albums) {
         this.albums = albums;
     }
 
@@ -21,7 +21,7 @@ public class PredicateExample {
         if (name == null) {
             return albums;
         }
-        List<Album> filteredAlbums = new ArrayList<Album>();
+        List<Album> filteredAlbums = new ArrayList<>();
         for (Album album : albums) {
             if (name.equals(album.getName())) {
                 filteredAlbums.add(album);
