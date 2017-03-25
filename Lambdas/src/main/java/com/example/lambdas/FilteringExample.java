@@ -7,11 +7,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class PredicateExample {
+public class FilteringExample {
 
     private List<Album> albums;
 
-    public PredicateExample(List<Album> albums) {
+    public FilteringExample(List<Album> albums) {
         this.albums = albums;
     }
 

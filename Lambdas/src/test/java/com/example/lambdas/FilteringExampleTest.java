@@ -8,19 +8,19 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PredicateExampleTest {
+public class FilteringExampleTest {
 
-    private PredicateExample predicateExample;
+    private FilteringExample filteringExample;
 
     @Before
     public void before() {
-        predicateExample = new PredicateExample(AlbumsCollection.getAlbums());
+        filteringExample = new FilteringExample(AlbumsCollection.getAlbums());
     }
 
     @Test
     public void filterAlbumsByName_givenPianoAlbum_shouldReturnPianoAlbumOnly() {
         // When
-        List<Album> filteredAlbums = predicateExample.filterAlbumsByName("Piano");
+        List<Album> filteredAlbums = filteringExample.filterAlbumsByName("Piano");
 
         // Then
         assertThat(filteredAlbums).hasSize(1);
@@ -30,7 +30,7 @@ public class PredicateExampleTest {
     @Test
     public void filterAlbumsByName_givenLedZeppelinArtist_shouldReturnLedZeppelinAlbumOnly() {
         // When
-        List<Album> filteredAlbums = predicateExample.filterAlbumsByArtist("Led Zeppelin");
+        List<Album> filteredAlbums = filteringExample.filterAlbumsByArtist("Led Zeppelin");
 
         // Then
         assertThat(filteredAlbums).hasSize(1);
@@ -40,7 +40,7 @@ public class PredicateExampleTest {
     @Test
     public void filterAlbumsByName_givenJazzGenre_shouldReturnTwoJazzAlbumsOnly() {
         // When
-        List<Album> filteredAlbums = predicateExample.filterAlbumsByGenre(Album.Genre.JAZZ);
+        List<Album> filteredAlbums = filteringExample.filterAlbumsByGenre(Album.Genre.JAZZ);
 
         // Then
         assertThat(filteredAlbums).hasSize(2);
