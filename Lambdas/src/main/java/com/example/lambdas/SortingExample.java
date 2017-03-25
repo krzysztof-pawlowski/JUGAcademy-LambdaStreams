@@ -16,31 +16,20 @@ public class SortingExample {
     }
 
     public List<Album> getSortedByName() {
-        if (albums == null) {
-            return Collections.emptyList();
-        }
-        List<Album> albumsCopy = new ArrayList<>(albums);
-        albumsCopy.sort(new Comparator<Album>() {
-            @Override public int compare(Album album1, Album album2) {
-                return album1.getName().compareTo(album2.getName());
-            }
-        });
-        return albumsCopy;
+        return getSortedByComparator((a1, a2) -> a1.getName().compareTo(a2.getName()));
     }
 
     public List<Album> getSortedByArtist() {
+        return getSortedByComparator(Comparator.comparing(Album::getArtist));
+    }
+
+    private List<Album> getSortedByComparator(Comparator<Album> comparator) {
         if (albums == null) {
             return Collections.emptyList();
         }
         List<Album> albumsCopy = new ArrayList<>(albums);
-        albumsCopy.sort(new Comparator<Album>() {
-            @Override public int compare(Album album1, Album album2) {
-                return album1.getArtist().compareTo(album2.getArtist());
-            }
-        });
+        albumsCopy.sort(comparator);
         return albumsCopy;
     }
-
-
 
 }
