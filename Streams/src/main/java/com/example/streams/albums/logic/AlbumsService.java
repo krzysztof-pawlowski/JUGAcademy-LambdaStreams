@@ -15,6 +15,7 @@ public class AlbumsService {
         for (Album album : artist.getAlbums()) {
             if (album.getGenre().equals(Album.Genre.ROCK)) {
                 rockAlbum = album;
+                break;
             }
         }
 
