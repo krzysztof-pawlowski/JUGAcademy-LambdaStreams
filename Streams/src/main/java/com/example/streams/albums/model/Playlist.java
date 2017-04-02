@@ -17,6 +17,11 @@ public class Playlist {
     private Album album;
 
     public List<MusicFile> getMusicFiles() {
-        return Collections.singletonList(new MusicFile());
+        if (album.getYearOfIssue() > 2000) {
+            return Collections.singletonList(new MusicFile("file1", "wav", new byte[] { 1, 2, 3 }));
+
+        } else {
+            return Collections.emptyList();
+        }
     }
 }
