@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -19,5 +20,5 @@ public class Artist {
 
     @Getter
     @Setter
-    private List<Album> albums;
+    private List<Album> albums = new ArrayList<>();
 }
